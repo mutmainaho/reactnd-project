@@ -21,14 +21,14 @@ class BooksApp extends Component {
       .then(books => {
         this.setState({ myBooks: books });
       })
-      .catch(err => {
-        console.log(err);
+      .catch(error => {
+        console.log(error);
         this.setState({ error: true });
       });
   };
   moveBook = (book, shelf) => {
-    BooksAPI.update(book, shelf).catch(err => {
-      console.log(err);
+    BooksAPI.update(book, shelf).catch(error => {
+      console.log(error);
       this.setState({ error: true });
     });
     if (shelf === 'none') {
@@ -42,7 +42,7 @@ class BooksApp extends Component {
       }));
     }
   };
-  searchForBooks = (300, false, query => {
+  searchForBooks = (200, false, query => {
     if (query.length > 0) {
       BooksAPI.search(query).then(books => {
         if (books.error) {
@@ -62,7 +62,7 @@ class BooksApp extends Component {
   render() {
     const { myBooks, searchBooks, error } = this.state;
     if (error) {
-      return <div>Network error. Please try again later.</div>;
+      return <div>Network error. Please refresh browser.</div>;
     }
     return (
       <div className="app">

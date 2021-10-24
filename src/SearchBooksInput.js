@@ -5,13 +5,9 @@ class SearchBooksInput extends Component {
     value: '',
   };
   handleChange = event => {
-    // this.setState({ value: event.target.value });
     const val = event.target.value;
     this.setState({ value: val }, () => {
-      // console.log(val);
-      // if (val.length >= 1) {
       this.props.onSearch(val);
-      // }
     });
   };
   render() {
